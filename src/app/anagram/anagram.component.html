@@ -1,0 +1,16 @@
+<div>
+    <label for="wordsInput">Masukkan Kata (Dipisahkan oleh koma ","):</label>
+    <textarea [(ngModel)]="wordsInput" id="wordsInput" rows="2" cols="50"></textarea>
+</div>
+<br>
+<button (click)="separateAnagrams()">Pisahkan Anagram</button>
+
+<div *ngIf="separatedAnagrams.length > 0">
+    <p>Anagram yang Terpisah:</p>
+    <div *ngFor="let anagrams of separatedAnagrams">
+        <span *ngFor="let word of anagrams; let last = last">{{ word }}{{ !last ? ', ' : '' }}</span>
+    </div>
+</div>
+<div *ngIf="separatedAnagrams.length === 0 && wordsInput.trim() !== ''">
+    <p>Tidak ditemukan anagram.</p>
+</div>
